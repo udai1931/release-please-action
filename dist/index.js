@@ -59656,8 +59656,18 @@ const conventionalCommitsFilter = __nccwpck_require__(55003);
 const conventionalChangelogWriter = __nccwpck_require__(86207);
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const presetFactory = __nccwpck_require__(88761);
+
 function addConventionalCommitPrefix(commits) {
-  return commits.map((commit) => ({...commit, message: `fix: ${commit.message}`}))
+  return commits.map((commit) => {
+    const conventionalCommits = ["fix","feat","BREAKING CHANGE"]
+    const conventionalCommit = commit.message.split(":")[0];
+
+    if (!conventionalCommit) return commit
+
+    return conventionalCommits.some((message) => conventionalCommit.includes(message)) ?
+    commit :
+    {...commit, message: `fix: ${commit.message}`}
+  })
 }
 
 function getParsedCommits(commits, commitFilter = () => false) {
