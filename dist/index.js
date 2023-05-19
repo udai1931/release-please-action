@@ -59657,11 +59657,10 @@ const conventionalChangelogWriter = __nccwpck_require__(86207);
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const presetFactory = __nccwpck_require__(88761);
 function addConventionalCommitPrefix(commits) {
-  return 
-  
+  return commits.map((commit) => ({...commit, message: `fix: ${commit.message}`}))
 }
 
-function getParsedCommits(commits, commitFilter = () => false) {ƒ
+function getParsedCommits(commits, commitFilter = () => false) {
     const parsedCommits = [];
     for (const commit of commits) {
         try {
