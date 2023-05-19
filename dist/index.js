@@ -59726,7 +59726,7 @@ function hasExtendedContext(line) {
 class ConventionalCommits {
     constructor(options) {
         this.commits = addConventionalCommitPrefix(options.commits);
-        this.parsedCommits = getParsedCommits(options.commits, options.commitFilter);
+        this.parsedCommits = getParsedCommits(addConventionalCommitPrefix(options.commits), options.commitFilter);
         this.bumpMinorPreMajor = options.bumpMinorPreMajor || false;
         this.bumpPatchForMinorPreMajor = options.bumpPatchForMinorPreMajor || false;
         this.host = options.host || 'https://www.github.com';
