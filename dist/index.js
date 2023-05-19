@@ -59656,7 +59656,12 @@ const conventionalCommitsFilter = __nccwpck_require__(55003);
 const conventionalChangelogWriter = __nccwpck_require__(86207);
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const presetFactory = __nccwpck_require__(88761);
-function getParsedCommits(commits, commitFilter = () => false) {
+function addConventionalCommitPrefix(commits) {
+  return 
+  
+}
+
+function getParsedCommits(commits, commitFilter = () => false) {ƒ
     const parsedCommits = [];
     for (const commit of commits) {
         try {
@@ -59721,7 +59726,7 @@ function hasExtendedContext(line) {
 }
 class ConventionalCommits {
     constructor(options) {
-        this.commits = options.commits;
+        this.commits = addConventionalCommitPrefix(options.commits);
         this.parsedCommits = getParsedCommits(options.commits, options.commitFilter);
         this.bumpMinorPreMajor = options.bumpMinorPreMajor || false;
         this.bumpPatchForMinorPreMajor = options.bumpPatchForMinorPreMajor || false;
