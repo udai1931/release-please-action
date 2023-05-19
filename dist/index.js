@@ -19306,6 +19306,10 @@ class Python extends release_pr_1.ReleasePR {
             currentTag: `v${candidate.version}`,
             previousTag: candidate.previousTag,
         });
+        checkpoint_1.checkpoint(`OP1: ${commits.toString()}`, checkpoint_1.CheckpointType.Success);
+        checkpoint_1.checkpoint(`OP2: ${cc.toString()}`, checkpoint_1.CheckpointType.Success);
+        checkpoint_1.checkpoint(`OP3: ${candidate}`, checkpoint_1.CheckpointType.Success);
+        checkpoint_1.checkpoint(`OP4: ${changelogEntry}`, checkpoint_1.CheckpointType.Success);
         // don't create a release candidate until user facing changes
         // (fix, feat, BREAKING CHANGE) have been made; a CHANGELOG that's
         // one line is a good indicator that there were no interesting commits.
