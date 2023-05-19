@@ -63198,6 +63198,10 @@ class ReleasePR {
         // one line is a good indicator that there were no interesting commits.
         if (this.changelogEmpty(changelogEntry)) {
             logger_1.logger.warn("OP 1");
+            logger_1.logger.warn(commits.toString());
+            logger_1.logger.warn(cc);
+            logger_1.logger.warn(candidate);
+            logger_1.logger.warn(changelogEntry);
             logger_1.logger.warn(`no user facing commits found since ${latestTag ? latestTag.sha : 'beginning of time'}`);
             return undefined;
         }
