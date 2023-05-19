@@ -63197,6 +63197,7 @@ class ReleasePR {
         // (fix, feat, BREAKING CHANGE) have been made; a CHANGELOG that's
         // one line is a good indicator that there were no interesting commits.
         if (this.changelogEmpty(changelogEntry)) {
+            logger_1.logger.warn("OP 1");
             logger_1.logger.warn(`no user facing commits found since ${latestTag ? latestTag.sha : 'beginning of time'}`);
             return undefined;
         }
@@ -63799,6 +63800,7 @@ class GoYoshi extends release_pr_1.ReleasePR {
         // (fix, feat, BREAKING CHANGE) have been made; a CHANGELOG that's
         // one line is a good indicator that there were no interesting commits.
         if (this.changelogEmpty(changelogEntry)) {
+            logger_1.logger.warn("OP 2");
             logger_1.logger.warn(`no user facing commits found since ${latestTag ? latestTag.sha : 'beginning of time'}`);
             return undefined;
         }
@@ -64384,6 +64386,7 @@ class JavaYoshi extends release_pr_1.ReleasePR {
         // (fix, feat, BREAKING CHANGE) have been made; a CHANGELOG that's
         // one line is a good indicator that there were no interesting commits.
         if (this.changelogEmpty(changelogEntry) && !this.snapshot) {
+            logger_1.logger.warn("OP 3");
             logger_1.logger.warn(`no user facing commits found since ${latestTag ? latestTag.sha : 'beginning of time'}`);
             return undefined;
         }
@@ -65498,6 +65501,7 @@ class RubyYoshi extends release_pr_1.ReleasePR {
             // (fix, feat, BREAKING CHANGE) have been made; a CHANGELOG that's
             // one line is a good indicator that there were no interesting commits.
             if (this.changelogEmpty(changelogEntry)) {
+                logger_1.logger.warn("OP 4");
                 logger_1.logger.warn(`no user facing commits found since ${lastReleaseSha ? lastReleaseSha : 'beginning of time'}`);
                 return undefined;
             }
