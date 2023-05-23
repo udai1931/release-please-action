@@ -60148,7 +60148,9 @@ class GitHubRelease {
         await this.gh.commentOnIssue(`:robot: Release is at ${release.html_url} :sunflower:`, candidate.pullNumber);
         // Add a label indicating that a release has been created on GitHub,
         // but a publication has not yet occurred.
-        await this.gh.addLabels([this.releaseLabel, "mergepr"], candidate.pullNumber);
+        logger_1.logger.info("Labels 1");
+        logger_1.logger.info([this.releaseLabel, 'mergepr']);
+        await this.gh.addLabels([this.releaseLabel, 'mergepr'], candidate.pullNumber);
         // Remove 'autorelease: pending' which indicates a GitHub release
         // has not yet been created.
         await this.gh.removeLabels(this.releasePR.labels, candidate.pullNumber);
@@ -62203,6 +62205,8 @@ class Manifest {
             changes,
         });
         if (pr) {
+            logger_1.logger.info("Labels 2");
+            logger_1.logger.info(constants_1.DEFAULT_LABELS);
             await this.gh.addLabels(constants_1.DEFAULT_LABELS, pr);
         }
         return pr;
@@ -62312,6 +62316,9 @@ class Manifest {
             }
         }
         if (allReleasesCreated) {
+            logger_1.logger.info("Labels 3");
+            logger_1.logger.info([github_release_1.GITHUB_RELEASE_LABEL, "mergepr"]);
+            logger_1.logger.info(constants_1.DEFAULT_LABELS);
             await this.gh.addLabels([github_release_1.GITHUB_RELEASE_LABEL, "mergepr"], lastMergedPR.number);
             await this.gh.removeLabels(constants_1.DEFAULT_LABELS, lastMergedPR.number);
         }
@@ -63415,6 +63422,8 @@ class ReleasePR {
         });
         // a return of undefined indicates that PR was not updated.
         if (pr) {
+            logger_1.logger.info("Labels 4");
+            logger_1.logger.info(this.labels);
             await this.gh.addLabels(this.labels, pr);
             logger_1.logger.info(`find stale PRs with label "${this.labels.join(',')}"`);
             await this.closeStaleReleasePRs(pr, includePackageName);
