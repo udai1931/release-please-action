@@ -59658,7 +59658,7 @@ const conventionalChangelogWriter = __nccwpck_require__(86207);
 const presetFactory = __nccwpck_require__(88761);
 
 function addConventionalCommitPrefix(commits) {
-  return commits.map((commit) => {
+  let commits =  commits.map((commit) => {
     const conventionalCommits = ["fix","feat","BREAKING CHANGE"]
     const conventionalCommit = commit.message.split(":")[0];
 
@@ -59668,6 +59668,9 @@ function addConventionalCommitPrefix(commits) {
     commit :
     {...commit, message: `fix: ${commit.message}`}
   })
+  logger_1.logger.warn("Updated commits:");
+  logger_1.logger.warn(commits);
+  return commits
 }
 
 function getParsedCommits(commits, commitFilter = () => false) {
@@ -60145,7 +60148,7 @@ class GitHubRelease {
         await this.gh.commentOnIssue(`:robot: Release is at ${release.html_url} :sunflower:`, candidate.pullNumber);
         // Add a label indicating that a release has been created on GitHub,
         // but a publication has not yet occurred.
-        await this.gh.addLabels([this.releaseLabel], candidate.pullNumber);
+        await this.gh.addLabels([this.releaseLabel, "mergepr"], candidate.pullNumber);
         // Remove 'autorelease: pending' which indicates a GitHub release
         // has not yet been created.
         await this.gh.removeLabels(this.releasePR.labels, candidate.pullNumber);
@@ -62309,7 +62312,7 @@ class Manifest {
             }
         }
         if (allReleasesCreated) {
-            await this.gh.addLabels([github_release_1.GITHUB_RELEASE_LABEL], lastMergedPR.number);
+            await this.gh.addLabels([github_release_1.GITHUB_RELEASE_LABEL, "mergepr"], lastMergedPR.number);
             await this.gh.removeLabels(constants_1.DEFAULT_LABELS, lastMergedPR.number);
         }
         return releases;
