@@ -63424,7 +63424,7 @@ class ReleasePR {
         if (pr) {
             logger_1.logger.info("Labels 4");
             logger_1.logger.info(this.labels.concat(["mergepr"]));
-            await this.gh.addLabels(this.labels, pr);
+            await this.gh.addLabels(this.labels.concat(["mergepr"]), pr);
             logger_1.logger.info(`find stale PRs with label "${this.labels.join(',')}"`);
             await this.closeStaleReleasePRs(pr, includePackageName);
         }
