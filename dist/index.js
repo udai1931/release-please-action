@@ -59658,7 +59658,7 @@ const conventionalChangelogWriter = __nccwpck_require__(86207);
 const presetFactory = __nccwpck_require__(88761);
 
 function addConventionalCommitPrefix(commits) {
-  let commits =  commits.map((commit) => {
+  let convCommits =  commits.map((commit) => {
     const conventionalCommits = ["fix","feat","BREAKING CHANGE"]
     const conventionalCommit = commit.message.split(":")[0];
 
@@ -59669,8 +59669,8 @@ function addConventionalCommitPrefix(commits) {
     {...commit, message: `fix: ${commit.message}`}
   })
   logger_1.logger.warn("Updated commits:");
-  logger_1.logger.warn(commits);
-  return commits
+  logger_1.logger.warn(convCommits);
+  return convCommits
 }
 
 function getParsedCommits(commits, commitFilter = () => false) {
