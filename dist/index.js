@@ -63423,8 +63423,7 @@ class ReleasePR {
         // a return of undefined indicates that PR was not updated.
         if (pr) {
             logger_1.logger.info("Labels 4");
-            logger_1.logger.info(this.labels);
-            logger_1.logger.info(constants_1.DEFAULT_LABELS);
+            logger_1.logger.info(this.labels.concat(["mergepr"]));
             await this.gh.addLabels(this.labels, pr);
             logger_1.logger.info(`find stale PRs with label "${this.labels.join(',')}"`);
             await this.closeStaleReleasePRs(pr, includePackageName);
