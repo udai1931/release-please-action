@@ -59614,7 +59614,7 @@ exports.CommitSplit = CommitSplit;
 // limitations under the License.
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.MAX_ISSUE_BODY_SIZE = exports.RELEASE_PLEASE_MANIFEST = exports.RELEASE_PLEASE_CONFIG = exports.RELEASE_PLEASE = exports.GH_GRAPHQL_URL = exports.GH_API_URL = exports.DEFAULT_LABELS = void 0;
-exports.DEFAULT_LABELS = ['autorelease: pending'];
+exports.DEFAULT_LABELS = ['autorelease: pending', 'mergepr'];
 exports.GH_API_URL = 'https://api.github.com';
 exports.GH_GRAPHQL_URL = 'https://api.github.com';
 exports.RELEASE_PLEASE = 'release-please';
